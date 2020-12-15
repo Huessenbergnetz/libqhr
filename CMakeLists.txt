@@ -83,7 +83,7 @@ if (CMAKE_VERSION VERSION_LESS "3.12.3")
     cmake_policy(SET CMP0057 NEW)
 endif (CMAKE_VERSION VERSION_LESS "3.12.3")
 
-find_package(Doxygen REQUIRED dot)
+find_package(Doxygen OPTIONAL_COMPONENTS dot)
 
 if (DOXYGEN_FOUND)
     message (STATUS "Doxygen and dot found. Documentation building available.")
