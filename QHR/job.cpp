@@ -145,7 +145,7 @@ void JobPrivate::requestFinished()
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 15, 0))
     if (Q_LIKELY(timeoutTimer && timeoutTimer->isActive())) {
-        qCDebug(qhrCore) << "Stopping request timeout timer with" << (d->timeoutTimer->remainingTime()/1000)) << "seconds left.";
+        qCDebug(qhrCore) << "Stopping request timeout timer with" << timeoutTimer->remainingTime()/1000 << "seconds left.";
         timeoutTimer->stop();
     }
 #endif
