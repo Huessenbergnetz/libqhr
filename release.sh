@@ -52,17 +52,19 @@ do
     cp $SRCFILE $DIR
 done
 
-pushd $TMPDIR
 rm -f "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.xz"
-# rm -f "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.gz"
-tar -cJf "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.xz" ${PRJNAME}-${VERSION}
-# tar -czf "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.gz" ${PRJNAME}-${VERSION}
-rm -rf ${PRJNAME}-${VERSION}
+
+pushd $TMPDIR
+tar -cf "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar" ${PRJNAME}-${VERSION}
 popd
+
+rm -rf $TMPDIR
 
 if [ $SIGNTARBALL -gt 0 ]
 then
-    gpg --armor --detach-sign --yes --default-key 6607CA3F41B25F45 --output "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.xz.sig" "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.xz"
-#     gpg --armor --detach-sign --yes --default-key 6607CA3F41B25F45 --output "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.gz.sig" "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.gz"
+    gpg --armor --detach-sign --yes --default-key 6607CA3F41B25F45 --output "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar.sig" "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar"
 fi
+
+xz "${OUTPUTDIR}/${PRJNAME}-${VERSION}.tar"
+
 exit 0
