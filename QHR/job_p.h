@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-#ifndef BUOHMARK_JOB_P_H
-#define BUOHMARK_JOB_P_H
+#ifndef QHR_JOB_P_H
+#define QHR_JOB_P_H
 
 #include "job.h"
 #include <QMap>
@@ -93,4 +93,4 @@ private:
 
 }
 
-#endif // BUOHMARK_JOB_P_H
+#endif // QHR_JOB_P_H
